@@ -1,0 +1,143 @@
+.animated-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Dots Background */
+.dots-background {
+  background: radial-gradient(circle at 25% 25%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(118, 75, 162, 0.1) 0%, transparent 50%);
+}
+
+.dots-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.floating-dot {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--dot-color, #667eea);
+  border-radius: 50%;
+  animation: floatUp linear infinite;
+  opacity: 0.6;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(100vh) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-100px) scale(1);
+    opacity: 0;
+  }
+}
+
+/* Waves Background */
+.waves-background {
+  background: linear-gradient(135deg, var(--bg-primary, #f5f7fa) 0%, var(--bg-secondary, #c3cfe2) 100%);
+}
+
+.wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 200%;
+  height: 100px;
+  background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+  animation: waveMove 20s ease-in-out infinite;
+}
+
+.wave1 {
+  animation-delay: 0s;
+  opacity: 0.3;
+}
+
+.wave2 {
+  animation-delay: -5s;
+  opacity: 0.2;
+  height: 80px;
+}
+
+.wave3 {
+  animation-delay: -10s;
+  opacity: 0.1;
+  height: 60px;
+}
+
+@keyframes waveMove {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0px);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-20px);
+  }
+}
+
+/* Particles Background */
+.particles-background {
+  background: radial-gradient(ellipse at center, rgba(102, 126, 234, 0.05) 0%, transparent 70%);
+}
+
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: var(--particle-color, #667eea);
+  border-radius: 50%;
+  animation: particleFloat ease-in-out infinite;
+}
+
+@keyframes particleFloat {
+  0%,
+  100% {
+    transform: translateY(0px) translateX(0px);
+    opacity: 0.3;
+  }
+  33% {
+    transform: translateY(-20px) translateX(10px);
+    opacity: 0.8;
+  }
+  66% {
+    transform: translateY(10px) translateX(-10px);
+    opacity: 0.5;
+  }
+}
+
+/* Dark theme adjustments */
+[data-theme="dark"] .floating-dot {
+  background: var(--dot-color, #9ca3af);
+}
+
+[data-theme="dark"] .particle {
+  background: var(--particle-color, #9ca3af);
+}
+
+[data-theme="dark"] .wave {
+  background: linear-gradient(90deg, transparent, rgba(156, 163, 175, 0.1), transparent);
+}
+
+[data-theme="dark"] .dots-background {
+  background: radial-gradient(circle at 25% 25%, rgba(156, 163, 175, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(107, 114, 128, 0.1) 0%, transparent 50%);
+}
+
+[data-theme="dark"] .particles-background {
+  background: radial-gradient(ellipse at center, rgba(156, 163, 175, 0.05) 0%, transparent 70%);
+}

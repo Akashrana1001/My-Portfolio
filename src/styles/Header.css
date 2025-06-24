@@ -1,0 +1,292 @@
+.header {
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+  color: white;
+  padding: 1rem 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 10px var(--shadow-color);
+  backdrop-filter: blur(10px);
+}
+
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: white;
+  animation: logoGlow 3s ease-in-out infinite alternate;
+}
+
+.nav ul {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.nav li {
+  animation: navSlideIn 0.6s ease-out forwards;
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+/* Stagger animation for nav items */
+.nav li:nth-child(1) { animation-delay: 0.1s; }
+.nav li:nth-child(2) { animation-delay: 0.2s; }
+.nav li:nth-child(3) { animation-delay: 0.3s; }
+.nav li:nth-child(4) { animation-delay: 0.4s; }
+.nav li:nth-child(5) { animation-delay: 0.5s; }
+
+.nav button {
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: all 0.4s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Animated underline effect */
+.nav button::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, white, rgba(255, 255, 255, 0.8));
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+/* Ripple effect */
+.nav button::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.6s ease;
+}
+
+.nav button:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.nav button:hover::before {
+  width: 80%;
+}
+
+.nav button:hover::after {
+  width: 100px;
+  height: 100px;
+  opacity: 0;
+}
+
+/* Active button animation */
+.nav button:active {
+  transform: translateY(-1px) scale(0.98);
+  transition: all 0.1s ease;
+}
+
+/* Pulse animation for active/current page */
+.nav button.active {
+  background: rgba(255, 255, 255, 0.2);
+  animation: pulseActive 2s ease-in-out infinite;
+}
+
+.nav button.active::before {
+  width: 100%;
+  background: white;
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.menu-toggle:hover {
+  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+/* Hamburger menu animation */
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+  transform: scale(0);
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* Keyframe animations */
+@keyframes navSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes logoGlow {
+  from {
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  }
+  to {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.4);
+  }
+}
+
+@keyframes pulseActive {
+  0%, 100% {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1);
+  }
+  50% {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+  }
+}
+
+@keyframes buttonShine {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Shine effect that can be triggered */
+.nav button.shine::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  animation: buttonShine 0.6s ease-out;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+  
+  .nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  .nav-open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .nav ul {
+    flex-direction: column;
+    padding: 1rem;
+    gap: 0;
+  }
+  
+  .nav li {
+    animation: mobileNavSlideIn 0.4s ease-out forwards;
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  
+  .nav-open li:nth-child(1) { animation-delay: 0.1s; }
+  .nav-open li:nth-child(2) { animation-delay: 0.2s; }
+  .nav-open li:nth-child(3) { animation-delay: 0.3s; }
+  .nav-open li:nth-child(4) { animation-delay: 0.4s; }
+  .nav-open li:nth-child(5) { animation-delay: 0.5s; }
+  
+  .nav button {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0;
+    margin: 0;
+  }
+  
+  .nav button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateX(5px);
+    padding-left: 1.5rem;
+  }
+  
+  .nav button::before {
+    display: none;
+  }
+}
+
+@keyframes mobileNavSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
