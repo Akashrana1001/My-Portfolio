@@ -9,28 +9,27 @@ const BoxReveal = ({ children, width = "fit-content", boxColor = "#667eea", dura
   const ref = useRef(null)
 
   useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsVisible(true)
+          setIsVisible(true);
           setTimeout(() => {
-            setIsComplete(true)
-          }, duration * 1000)
+            setIsComplete(true);
+          }, duration * 1000);
         }
       },
       { threshold: 0.1 },
-    )
+    );
 
-    if (ref.current) {
-      observer.observe(ref.current)
-    }
+    observer.observe(node);
 
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current)
-      }
-    }
-  }, [duration])
+      observer.unobserve(node);
+    };
+  }, [duration]);
 
   return (
     <div ref={ref} className="box-reveal-container" style={{ width }}>
