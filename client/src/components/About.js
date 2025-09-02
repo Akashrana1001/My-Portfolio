@@ -19,15 +19,19 @@ const About = () => {
             </BoxReveal>
             <BoxReveal>
               <p>
-                Passionate Computer Science Engineering student with hands-on experience in full-stack development.
-                Currently pursuing B-tech at Lovely Professional University and working as an Undergraduate Full Stack
-                Intern at Uplyx Solutions.
+                Passionate Computer Science Engineering student with hands-on experience in full-stack development
+                and <strong>Oracle Cloud Infrastructure</strong> certification. Currently pursuing B.Tech at Lovely 
+                Professional University while serving as an Undergraduate Full Stack Intern at Uplyx Solutions. 
+                I have completed certifications in <strong>AWS Cloud Essentials</strong> and participated in 
+                multiple hackathons, demonstrating practical problem-solving skills.
               </p>
             </BoxReveal>
             <BoxReveal>
               <p>
-                I specialize in building modern web applications using the MERN stack, developing REST APIs, and
-                creating scalable solutions for real-world problems.
+                I specialize in building modern web applications using the MERN stack, developing REST APIs, and 
+                creating scalable solutions for real-world problems. My experience includes working with cloud 
+                platforms like AWS and Oracle Cloud, AI integration using Gemini API, and real-time applications 
+                with Socket.IO.
               </p>
             </BoxReveal>
             <div className="contact-info">

@@ -3,11 +3,24 @@ import "../styles/Certificates.css"
 const Certificates = () => {
   const certificates = [
     {
-      title: "Responsive Web Design Certification",
-      issuer: "freeCodeCamp",
-      date: "Nov 20, 2023",
-      description: "Completed 300+ hours of coursework on HTML, CSS, Flexbox, and responsive design principles.",
-      link: "https://freecodecamp.org/certification/akashrana10/responsive-web-design",
+      title: "Oracle Cloud Infrastructure Fundamentals Associate",
+      issuer: "Oracle",
+      date: "2025",
+      description: "Comprehensive certification covering Oracle Cloud Infrastructure services, compute, storage, networking, and security fundamentals.",
+      link: "", // Add your certificate link here
+    },
+    {
+      title: "AWS Cloud Essentials",
+      issuer: "Amazon Web Services",
+      date: "2025",
+      description: "Foundation-level certification covering core AWS services, cloud computing concepts, security, and architectural best practices.",
+      link: "", // Add your certificate link here
+    },
+    {
+      title: "Code-A-Haunt 2.0 Hackathon Participation",
+      issuer: "Code",
+      date: "Feb 13–15, 2025",
+      description: "An application built with the MERN Stack was completed within 48 hours of the 48-hour hackathon.",
     },
     {
       title: "Code-A-Haunt Hackathon Participation",
@@ -16,10 +29,11 @@ const Certificates = () => {
       description: "Completed a 48 hour hackathon with HTML, CSS, JSP, and PHP to assist hospitals",
     },
     {
-      title: "Code-A-Haunt 2.0 Hackathon Participation",
+      title: "Responsive Web Design Certification",
       issuer: "freeCodeCamp",
-      date: "Feb 13–15, 2025",
-      description: "An application built with the MERN Stack was completed within 48 hours of the 48-hour hackathon.",
+      date: "Nov 20, 2023",
+      description: "Completed 300+ hours of coursework on HTML, CSS, Flexbox, and responsive design principles.",
+      link: "https://freecodecamp.org/certification/akashrana10/responsive-web-design",
     },
   ]
 

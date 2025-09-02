@@ -11,7 +11,7 @@ It includes modern design components, smooth animations, and a clean layout to s
 ------------------------------------------------
 🚀 LIVE DEMO
 ------------------------------------------------
-👉 https://your-deployed-site-link.vercel.app
+👉 my-portfolio-ashen-nine-53.vercel.app
 (Replace this with your actual Vercel/Netlify live link)
 
 ------------------------------------------------
