@@ -1,10 +1,26 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import "../styles/Header.css"
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 50
+      if (isScrolled !== scrolled) {
+        setScrolled(isScrolled)
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll)
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+    }
+  }, [scrolled])
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
@@ -19,7 +35,7 @@ const Header = () => {
   }
 
   return (
-    <header className="header">
+    <header className={`header ${scrolled ? "scrolled" : ""}`}>
       <div className="container">
         <div className="logo">
           <h2>Akash Chauhan</h2>
@@ -46,7 +62,7 @@ const Header = () => {
             </li>
           </ul>
         </nav>
-        <button className="menu-toggle" onClick={toggleMenu}>
+        <button className={`menu-toggle ${isMenuOpen ? "active" : ""}`} onClick={toggleMenu}>
           <span></span>
           <span></span>
           <span></span>

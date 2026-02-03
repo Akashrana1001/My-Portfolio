@@ -1,6 +1,6 @@
 .projects {
-  padding: 80px 0;
-  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  padding: 100px 0;
+  background: var(--bg-primary);
   position: relative;
   overflow: hidden;
 }
@@ -12,6 +12,7 @@
   width: 100%;
   height: 100%;
   z-index: 1;
+  opacity: 0.4;
 }
 
 .projects .container {
@@ -22,48 +23,73 @@
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
+  gap: 2.5rem;
+  perspective: 1000px;
 }
 
 .project-card {
   background: var(--card-bg);
   padding: 2rem;
-  border-radius: 15px;
+  border-radius: 20px;
   box-shadow: 0 10px 30px var(--shadow-color);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border-top: 4px solid #667eea;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   border: 1px solid var(--border-color);
   backdrop-filter: blur(10px);
   position: relative;
   z-index: 5;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.project-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
 }
 
 .project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.project-card:hover::before {
+  transform: scaleX(1);
 }
 
 .project-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .project-header h3 {
   font-size: 1.5rem;
   color: var(--text-primary);
-  font-weight: 600;
+  font-weight: 700;
   flex: 1;
+  line-height: 1.3;
 }
 
 .project-year {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
   color: white;
   padding: 0.3rem 0.8rem;
-  border-radius: 15px;
-  font-size: 0.8rem;
-  font-weight: 500;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+  margin-left: 1rem;
 }
 
 .project-tech {
@@ -71,17 +97,21 @@
 }
 
 .project-tech span {
-  background: var(--border-color);
-  color: var(--text-secondary);
+  display: inline-block;
+  background: var(--hover-bg);
+  color: var(--accent-primary);
   padding: 0.5rem 1rem;
-  border-radius: 20px;
-  font-size: 0.9rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
   font-weight: 500;
+  border: 1px solid var(--border-color);
+  line-height: 1.4;
 }
 
 .project-description {
   list-style: none;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  flex-grow: 1;
 }
 
 .project-description li {
@@ -90,63 +120,46 @@
   margin-bottom: 0.8rem;
   color: var(--text-secondary);
   line-height: 1.6;
+  font-size: 0.95rem;
 }
 
 .project-description li::before {
   content: "•";
   position: absolute;
   left: 0;
-  color: #667eea;
+  color: var(--accent-primary);
   font-weight: bold;
   font-size: 1.2rem;
 }
 
 .project-links {
-  display: flex;
-  gap: 1rem;
+  margin-top: auto;
 }
 
-.github-link {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: #667eea;
-  font-weight: 500;
-  padding: 0.5rem 1rem;
-  border: 2px solid #667eea;
-  border-radius: 25px;
-  transition: all 0.3s ease;
-}
+/* Customizing Shimmer Button if possible via CSS wrapping it,
+   but since it's a component, we rely on its internal styles or passed props.
+   However, we can style the container */
 
-.github-link:hover {
-  background: #667eea;
-  color: white;
-  transform: translateY(-2px);
-}
-
-.github-link .icon {
-  font-size: 1rem;
-}
-
-.github-link-shimmer {
-  border: none !important;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
-  color: white !important;
-}
-
-.github-link-shimmer:hover {
-  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%) !important;
+.project-links button {
+  width: 100%;
+  justify-content: center;
 }
 
 /* Mobile styles */
 @media (max-width: 768px) {
   .projects-grid {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 
   .project-header {
     flex-direction: column;
-    gap: 1rem;
+    gap: 0.5rem;
+  }
+
+  .project-year {
+    margin-left: 0;
+    align-self: flex-start;
   }
 
   .project-card {

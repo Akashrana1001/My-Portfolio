@@ -9,13 +9,15 @@ import Contact from "./components/Contact"
 import FloatingDock from "./components/FloatingDock"
 import { ThemeProvider } from "./context/ThemeContext"
 import ThemeToggle from "./components/ui/theme-toggle"
+import Cursor from "./components/ui/Cursor"
 import "./styles/App.css"
 
 function App() {
   return (
     <ThemeProvider>
       <div className="App">
-      <ThemeToggle /> 
+        <Cursor />
+        <ThemeToggle />
         <Header />
         <main>
           <About />
